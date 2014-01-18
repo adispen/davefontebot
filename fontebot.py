@@ -11,13 +11,13 @@ r.login('DaveFonteBot', 'HellYeah')
 subreddit = r.get_subreddit('114g')
 subreddit_comments = subreddit.get_comments()
 already_done = set()
-flat_comments = praw.helpers.flatten_tree(subreddit_comments)
 
 buzzWords = ['hackathon', 'hackathons', 'mhacks', 'hackru', 'pennapps', 'hackmit', 'hackny']
-
-for comment in flat_comments:
-	comment_text = comment.body.lower()
-	has_buzz = any(string in comment_text for string in buzzWords)
-	if comment.id not in already_done and has_buzz:
-		comment.reply("Hell Yeah!")
-		already_done.add(comment.id)
+while True:
+	for comment in subreddit_comments:
+		comment_text = comment.body.lower()
+		has_buzz = any(string in comment_text for string in buzzWords)
+		if comment.id not in already_done and has_buzz:
+			comment.reply("Helllllll yeah!")
+			already_done.add(comment.id)
+	time.sleep(300)
