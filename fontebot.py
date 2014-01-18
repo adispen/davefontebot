@@ -1,5 +1,8 @@
 import time
 import praw
+import os
+
+PASSWORD = os.environ.get('BOTPASS')
 
 user_agent = ("davefontebot/1.0 by orangesodasmurf"
 			  "replies to comments about hackathons"
@@ -7,8 +10,8 @@ user_agent = ("davefontebot/1.0 by orangesodasmurf"
 			  "github.com/adispen/davefontebot")
 r = praw.Reddit(user_agent = user_agent)
 
-r.login('DaveFonteBot', 'HellYeah')
-subreddit = r.get_subreddit('114g')
+r.login('DaveFonteBot', PASSWORD)
+subreddit = r.get_subreddit('114g+ahf4')
 subreddit_comments = subreddit.get_comments()
 already_done = set()
 
